@@ -1,12 +1,13 @@
+version: '3'
 services:
   umami:
     image: ghcr.io/umami-software/umami:postgresql-latest
     ports:
-      - "3000:3000" # Expose port 3000 internally for Coolify
+      - "3000:3000" # Expose port 3000 for Coolify to bind
     environment:
       DATABASE_URL: postgresql://umami:umami@db:5432/umami
       DATABASE_TYPE: postgresql
-      APP_SECRET: blahblahblah
+      APP_SECRET: blahblahblah # Replace with a strong random string
     depends_on:
       db:
         condition: service_healthy
