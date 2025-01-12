@@ -1,8 +1,8 @@
----
-version: '3'
 services:
   umami:
     image: ghcr.io/umami-software/umami:postgresql-latest
+    ports:
+      - "3000:3000" # Expose port 3000 internally for Coolify
     environment:
       DATABASE_URL: postgresql://umami:umami@db:5432/umami
       DATABASE_TYPE: postgresql
@@ -31,5 +31,6 @@ services:
       interval: 5s
       timeout: 5s
       retries: 5
+
 volumes:
   umami-db-data:
